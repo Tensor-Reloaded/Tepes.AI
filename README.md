@@ -1,3 +1,3 @@
 # Tepes.AI
 
-Info here: https://www.notion.so/Tepes-AI-d3f47ff7c3044a5a98cf434665808565
+Info here: https://docs.google.com/document/d/1a78ke_HjEj2-6NNwZzhNRbeXTywlwA5PBHYc5BC-IG0/edit#bookmark=id.wnzhxihiz3qv
