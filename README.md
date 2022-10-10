@@ -6,7 +6,7 @@ Info [here](https://docs.google.com/document/d/1a78ke_HjEj2-6NNwZzhNRbeXTywlwA5P
 - Croitoru Razvan - **Member** - _croitorurazvan1@gmail.com_
 - Smau Adrian - **Member** - _smauadrian@gmail.com_
 - Horceag Codrin - **Member** - _codrinhorceag@gmail.com_
-- Mosor Andrei - **Member**
+- Mosor Andrei - **Member** - _mosorandrei49@gmail.com_
 - Cristian Simionescu - **Coordinator**
 
 ## 2.Work
