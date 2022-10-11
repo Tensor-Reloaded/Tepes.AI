@@ -1,7 +1,6 @@
 - Croitoru Razvan
 1. Created README with info about team
 2. Created laboratory 2 info files
-3. Cleaned & updated GitHub
 4. Contributed to State-of-the-art document
 
 - Smau Adrian
