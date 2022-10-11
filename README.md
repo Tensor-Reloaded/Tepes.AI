@@ -20,7 +20,7 @@ page from which you belong. Use meaningful names for the project and the steps y
 The results for themes from Lab 2 must be added on portal. Specify what everyone does in a
 separate [file](txt-files/laboratory2-responsabilities.txt) type “.txt”. Also create a file with following information: project name,
 members names, the coordinator, contact information, etc..
- - ✅ On the theme set by the scientific coordinator you make the [state-of-the-art](https://docs.google.com/document/d/1dnSBrRP6jNJn05pqo_PpvC5C7LpegoSvaKzElo4Qalk) (a document
+ - ✅ On the theme set by the scientific coordinator you make the [state-of-the-art](https://docs.google.com/document/d/1Y7tl5RLEwBVzp951lLt35fuOIm2RMJpEmJc_y_Fz06U) (a document
 (1/2 pages per team member), which to put on GoogleDocs/GitHub/Bitbucket/etc., in
 English with):
 
