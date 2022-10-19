@@ -25,13 +25,13 @@ members names, the coordinator, contact information, etc..
 English with):
 
 ### 2.3 Laboratory 3
- - 🚧 On the theme set by the coordinator perform requirements analysis, a document which will be added on
+ - ✅ On the theme set by the coordinator perform [requirements analysis](https://docs.google.com/document/d/1_exZ5Si6wJywRzwW-RFTD4LVZy43PIyMTe9ET9facU8), a document which will be added on
 the portal in English describing the major components will be available in the application that you make.
 Important: This document will describe all the application you would have to do, specifying what
 components will be implemented by the end of this semester. In determining the score will take into
 account the complexity of Requirement analysis, the correct identification of possible actors and how to
 make use case scenarios.
- - 🚧 Using the document made at Problem 2 create two [diagrams](diagrams) by each team member (UML). (All names will
+ - ✅ Using the document made at Problem 2 create two [diagrams](diagrams) by each team member (UML). (All names will
 be in English). Class diagrams and use-case diagrams are mandatory. In determining the score will take into
 account the correct identification of elements and correlations between them. One person from the team
 will coordinate the team and he will know what was done by each team member and he will make a short
