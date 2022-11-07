@@ -47,7 +47,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from constants import *
-from parser import get_parser
+from declaration_parser import get_parser
 
 
 def get_selenium_driver():
