@@ -1,0 +1,27 @@
+try:
+    pagination_elems = driver.find_element("id", PAGINATION_BAR).find_elements("css selector", "*")
+    if len(pagination_elems[0].text) > 0:
+        try:
+            download_button = driver.find_element("id", DESCARCA_CSV)
+            download_button.click()
+            print("Downloading CSV!...")
+            time.sleep(4)
+        except NoSuchElementException:
+            print("No records found!...")
+            time.sleep(4)
+        print(pagination_elems[5].text)
+        for i in range(7, 6 + len(pagination_elems[5].text)):
+            print("Moving to page " + str(i - 5) + "!...")
+            time.sleep(4)
+            pagination_elems[i].click()
+            try:
+                download_button = driver.find_element("id", DESCARCA_CSV)
+                download_button.click()
+                print("Downloading CSV!...")
+                time.sleep(4)
+            except NoSuchElementException:
+                print("No records found!...")
+                time.sleep(4)
+except NoSuchElementException:
+    print("No pagination found!...")
+    time.sleep(4)
