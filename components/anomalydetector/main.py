@@ -1,7 +1,7 @@
-from components.AnomalyCreator import AnomalyCreator
-from components.DataGenerator import DataGenerator
-from components.KMeansApproach import KMeansApproach
-from components.KnnApproach import KnnApproach
+from components.anomaly_creator import AnomalyCreator
+from components.data_generator import DataGenerator
+from components.kmeans_approach import KMeansApproach
+from components.knn_approach import KnnApproach
 
 # We generate the data - 1000 people with salaries in 5 tiers - between 2500 and 35000
 data = DataGenerator.generateData()
