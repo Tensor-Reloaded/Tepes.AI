@@ -1,8 +1,8 @@
-from components.ContractionFixer import ContractionFixer
-from components.Lemmatizer import Lemmatizer
-from components.POS_Tagger import POS_Tagger
-from components.PunctuationRemover import PunctuationRemover
-from components.WordTokenizer import WordTokenizer
+from components.contraction_fixer import ContractionFixer
+from components.lemmatizer import Lemmatizer
+from components.pos_tagger import POS_Tagger
+from components.punctuation_remover import PunctuationRemover
+from components.word_tokenizer import WordTokenizer
 
 input_text = "It would be unfair to demand that people cease pirating files when " \
              "those same people aren't paid for their participation in very lucrative network schemes. " \

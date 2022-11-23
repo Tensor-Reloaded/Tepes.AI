@@ -1,7 +1,6 @@
 import argparse
 
-ARGUMENTS = ["website", "--nume", "--prenume", "--institutie", "--functii", "--data_inceput", "--data_sfarsit",
-             "--judet", "--localitate", "--tip_declaratie", "--count"]
+ARGUMENTS = ["website"]
 
 
 def get_parser():

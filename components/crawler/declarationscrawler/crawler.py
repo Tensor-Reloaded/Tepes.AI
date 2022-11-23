@@ -38,6 +38,7 @@
 #         # download_button = row.find_element_by_class_name(r"null ui-col-7 ui-datatable-first")
 #         # download_button.click()
 import os.path
+import sys
 
 from selenium import webdriver
 from selenium.common import TimeoutException
@@ -47,7 +48,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from constants import *
-from declaration_parser import get_parser
+from declaration_parser import get_parser, parse_args
 
 
 def get_selenium_driver():
@@ -142,7 +143,6 @@ def crawl(args):
 
 
 if __name__ == '__main__':
-    arg_parser = get_parser()
-    args = arg_parser.parse_args()
+    args = parse_args(sys.argv[1:])
     crawl(args)
     print(args)
