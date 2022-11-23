@@ -1,4 +1,4 @@
-from Convertor import Convertor
+from components.Normalizer.Convertor import Convertor
 
 
 class PoliticianConvertor(Convertor):

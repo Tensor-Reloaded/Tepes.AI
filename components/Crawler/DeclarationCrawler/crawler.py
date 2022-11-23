@@ -41,15 +41,16 @@ import os.path
 
 from selenium import webdriver
 from selenium.common import TimeoutException
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from constants import *
 from declaration_parser import get_parser
+from CallDecorator import call_decorator
 
 
+@call_decorator
 def get_selenium_driver():
     DECLARATIONS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "declarations")
     prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': DECLARATIONS_PATH}
@@ -58,6 +59,7 @@ def get_selenium_driver():
     return webdriver.Chrome(executable_path=LOCATIE_DRIVER, options=options)
 
 
+@call_decorator
 def fill_detalii_declaratii_integritate(driver, args):
     # Open advanced settings page
     buton_cautare_avansata_elem = driver.find_element("id", CAUTARE_AVANSATA_BUTON_ID)
@@ -104,11 +106,13 @@ def fill_detalii_declaratii_integritate(driver, args):
         select_declaratie.select_by_visible_text(args.tip_declaratie)
 
 
+@call_decorator
 def search_declaratii_integritate(driver):
     buton_cauta_elem = driver.find_element("id", CAUTA_BUTON_ID)
     buton_cauta_elem.click()
 
 
+@call_decorator
 def descarca_declaratii_integritate(driver, count):
     # Wait for elements to load
     try:
@@ -118,21 +122,24 @@ def descarca_declaratii_integritate(driver, count):
         print("Timed out waiting for page to load")
 
     if not count:
-        pass # TODO -> implement next page accessing and download all declarations
+        pass  # TODO -> implement next page accessing and download all declarations
     else:
         body_tabel_elem = driver.find_element("id", BODY_TABEL_ID)
-        for row in body_tabel_elem.find_elements("css selector", "*")[::2]: # Mergem din 2 in 2 ca imi dubleaza elementele for some reason
+        for row in body_tabel_elem.find_elements("css selector", "*")[
+                   ::2]:  # Mergem din 2 in 2 ca imi dubleaza elementele for some reason
             print(row.text)
             if row.text == DESCARCA_DOCUMENT_BUTON_TEXT:
                 row.click()
 
 
+@call_decorator
 def crawl_declaratii_integritate(driver, args):
     fill_detalii_declaratii_integritate(driver, args)
     search_declaratii_integritate(driver)
     descarca_declaratii_integritate(driver, args.count)
 
 
+@call_decorator
 def crawl(args):
     driver = get_selenium_driver()
     driver.get(args.website)

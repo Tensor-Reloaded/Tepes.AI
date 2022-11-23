@@ -1,4 +1,4 @@
-from NormalizerInterface import NormalizerInterface
+from components.Normalizer.NormalizerInterface import NormalizerInterface
 
 
 class PDFNormalizer(NormalizerInterface):
