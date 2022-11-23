@@ -1,4 +1,4 @@
-from Convertor import Convertor
+from components.normalizer.converter import Convertor
 
 
 class SearchModelConvertor(Convertor):
