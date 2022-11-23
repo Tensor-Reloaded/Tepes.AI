@@ -1,4 +1,4 @@
-from NormalizerInterface import NormalizerInterface
+from components.normalizer.normalizer_interface import NormalizerInterface
 
 
 class CSVNormalizer(NormalizerInterface):
