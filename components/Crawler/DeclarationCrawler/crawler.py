@@ -47,7 +47,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from constants import *
 from declaration_parser import get_parser
-from CallDecorator import call_decorator
+from CallDecorator import call_decorator, time_checker, exception_checker
 
 
 @call_decorator
@@ -59,6 +59,8 @@ def get_selenium_driver():
     return webdriver.Chrome(executable_path=LOCATIE_DRIVER, options=options)
 
 
+@exception_checker
+@time_checker
 @call_decorator
 def fill_detalii_declaratii_integritate(driver, args):
     # Open advanced settings page
@@ -106,12 +108,16 @@ def fill_detalii_declaratii_integritate(driver, args):
         select_declaratie.select_by_visible_text(args.tip_declaratie)
 
 
+@exception_checker
+@time_checker
 @call_decorator
 def search_declaratii_integritate(driver):
     buton_cauta_elem = driver.find_element("id", CAUTA_BUTON_ID)
     buton_cauta_elem.click()
 
 
+@exception_checker
+@time_checker
 @call_decorator
 def descarca_declaratii_integritate(driver, count):
     # Wait for elements to load
@@ -132,6 +138,8 @@ def descarca_declaratii_integritate(driver, count):
                 row.click()
 
 
+@exception_checker
+@time_checker
 @call_decorator
 def crawl_declaratii_integritate(driver, args):
     fill_detalii_declaratii_integritate(driver, args)
@@ -139,6 +147,8 @@ def crawl_declaratii_integritate(driver, args):
     descarca_declaratii_integritate(driver, args.count)
 
 
+@exception_checker
+@time_checker
 @call_decorator
 def crawl(args):
     driver = get_selenium_driver()
