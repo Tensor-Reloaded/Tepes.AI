@@ -10,8 +10,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from constants import *
 from scraping_parser import get_parser
+from CallDecorator import call_decorator
 
 
+@call_decorator
 def get_selenium_driver():
     DECLARATIONS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "declarations")
     prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': DECLARATIONS_PATH}
@@ -20,6 +22,7 @@ def get_selenium_driver():
     return webdriver.Chrome(executable_path=LOCATIE_DRIVER, options=options)
 
 
+@call_decorator
 def search_declaratii_integritate(driver):
     buton_cauta_elem = driver.find_element("id", CAUTA_BUTON_ID)
     buton_cauta_elem.click()
@@ -27,6 +30,7 @@ def search_declaratii_integritate(driver):
     time.sleep(4)
 
 
+@call_decorator
 def descarca_declaratii_integritate(driver):
     try:
         element_present = EC.presence_of_element_located(("id", SEARCH_RESULT_ID))
@@ -52,6 +56,7 @@ def descarca_declaratii_integritate(driver):
             time.sleep(4)
 
 
+@call_decorator
 def scrape_declaratii_integritate(driver):
     open_advanced_search_page(driver)
 
@@ -90,6 +95,7 @@ def scrape_declaratii_integritate(driver):
         current_start_date += datetime.timedelta(days=1)
 
 
+@call_decorator
 def open_advanced_search_page(driver):
     # Open advanced settings page
     buton_cautare_avansata_elem = driver.find_element("id", CAUTARE_AVANSATA_BUTON_ID)
@@ -102,6 +108,7 @@ def open_advanced_search_page(driver):
         print("Timed out waiting for advanced search page to load")
 
 
+@call_decorator
 def scrape(args):
     driver = get_selenium_driver()
     driver.get(args.website)

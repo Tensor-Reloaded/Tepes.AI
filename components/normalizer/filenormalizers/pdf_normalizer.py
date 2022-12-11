@@ -1,4 +1,4 @@
-from components.Normalizer.normalizer_interface import NormalizerInterface
+from components.normalizer.normalizer_interface import NormalizerInterface
 from PyPDF2 import PdfFileReader
 
 
@@ -35,6 +35,7 @@ class PDFNormalizer(NormalizerInterface):
         position.replace(',', ' ')
         print(position)
         return position
+
 
 if __name__ == "__main__":
     file = r"D:\Facultate\master anul 1\Tepes.AI\components\Crawler\declarationscrawler\data\declarations\declaratie_ocr_converter.pdf"
