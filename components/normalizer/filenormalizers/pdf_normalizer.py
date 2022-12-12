@@ -1,25 +1,25 @@
+
 from components.normalizer.normalizer_interface import NormalizerInterface
 from PyPDF2 import PdfFileReader
+import re
 
 
 class PDFNormalizer(NormalizerInterface):
     def __init__(self, pdf_file):
         self.reader = PdfFileReader(pdf_file)
+        self.content = ''
 
     def normalize_data(self):
-        info = self.reader.getDocumentInfo()
-        print(info)
         pages_number = self.reader.getNumPages()
-
         for p in range(pages_number):
-            page = self.reader.getPage(p)
-            # print(page)
-            # print(p, page.extractText())
+            print(self.reader.getPage(0).extractText())
+            self.content += self.reader.getPage(p).extractText()
+
+        print(self.content)
 
     def extract_name(self):
-        first_page = self.reader.getPage(0).extractText();
-        split_page = first_page.partition("Subsemnatul,")[2];
-        # print(split_page)
+        first_page = self.reader.getPage(0).extractText()
+        split_page = first_page.partition("Subsemnatul,")[2]
         name = split_page.partition(', ')[0]
         last_name = name.split(' ')[1]
         first_name = name.split(' ')[3]
@@ -28,19 +28,138 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_position(self):
         first_page = self.reader.getPage(0).extractText();
-        split_page = first_page.partition("av4nd functia de ")[2];
+        split_page = first_page.partition("av4nd functia de ")[2]
         position = split_page.split(', CNP')[0]
-        print(split_page.split(', CNP'))
-        print("position is: " + position)
         position.replace(',', ' ')
-        print(position)
+        position = list(position)
+        for i in range(len(position)):
+            if position[i] == '\n':
+                position[i] = ' '
+
+        position = "".join(position)
+        position = re.sub(' +', ' ', position)
+
+        print("position is: " + position)
         return position
+
+    def extract_type_of_declaration(self):
+        first_page = self.reader.getPage(0).extractText()
+        split_page = first_page.partition("Subsemnatul,")[0]
+        type_of_declaration = re.sub(' +', ' ', split_page.split('\n')[2])
+        print("type of declaration is: " + type_of_declaration)
+        return type_of_declaration
+
+    def extract_salary(self):
+        fourth_page = self.reader.getPage(4).extractText()
+        split_page = fourth_page.partition("Salari")[2].partition("\n")[0]
+        salary = re.sub(' ', '', split_page)
+        print("salary is: " + salary)
+        return salary
+
+    def extract_vehicles(self):
+        second_page = self.reader.getPage(1).extractText()
+        split_page = second_page.partition("Autoturism")
+        vehicles = list()
+        while split_page[2] != '':
+            vehicles.append(split_page[2])
+            split_page = split_page[2].partition('Autoturism')
+
+        returned_vehicles = list()
+        for vehicle in vehicles:
+            if vehicle == vehicles[0]:
+                vehicle = re.sub('\n', '', vehicle.partition('Autoturism')[0])
+                vehicle = str(vehicle.lstrip())
+                returned_vehicles.append(vehicle)
+
+            else:
+                vehicle = vehicle.partition("Bunuri")[0]
+                vehicle = re.sub(' +', ' ', vehicle)
+                vehicle = re.sub('\n', '', vehicle)
+                vehicle = vehicle.lstrip()
+
+                checker = True
+                while checker:
+                    vehicle = vehicle[:-1]
+                    if vehicle[-1].isalpha():
+                        checker = False
+
+                returned_vehicles.append(vehicle)
+
+        print('Vehicles are: ')
+        for vehicle in returned_vehicles:
+            print(vehicle)
+        return returned_vehicles
+
+    def extract_assets(self):
+        first_page = self.reader.getPage(0).extractText()
+        split_page = first_page.partition('Se vor declara inclusiv cele aflate in alte {ari.')
+        assets = split_page[2].split('|')
+        for asset in assets:
+            asset = re.sub('\n +', ' ', asset)
+            asset = asset.split(' ')
+            asset = [i for i in asset if i != '']
+
+            # print(asset)
+
+        assets.pop()
+        assets.pop()
+        returned_assets = list()
+        for asset in assets:
+            if not asset.__contains__('\n'):
+                asset = ''
+
+            returned_assets.append(asset)
+
+        returned_assets = [i for i in returned_assets if i != '']
+        final_assets = list()
+        for asset in returned_assets:
+            asset = asset.split('\n')[-1]
+
+            checker = True
+            while checker:
+                asset = asset[:-1]
+                if asset[-1].isdigit():
+                    checker = False
+            asset = re.sub(r'[^\w\s]', '', asset)
+            final_assets.append(asset)
+
+        print('Assets are:')
+        for asset in final_assets:
+            print(asset)
+        return final_assets
+
+    def extract_debts(self):
+        fourth_page = self.reader.getPage(3).extractText()
+        split_page = fourth_page.partition('Se vor declara inclusiv pasivele financiare acumulate')
+        debts = split_page[2].partition('.')[2]
+        debts = re.sub('\n +', ' ', debts)
+        debts = debts.lstrip()
+        debts = debts.partition('VI')[0].split('lei')
+        returned_debts = list()
+        for debt in debts:
+            debt = re.sub('\n', '', debt)
+            debt += 'lei'
+            returned_debts.append(debt)
+
+        returned_debts.pop()
+
+        print('Debts are: ')
+        for debt in returned_debts:
+            print(debt)
+
+        return returned_debts
 
 
 if __name__ == "__main__":
-    file = r"D:\Facultate\master anul 1\Tepes.AI\components\Crawler\declarationscrawler\data\declarations\declaratie_ocr_converter.pdf"
+    file = r"C:\Users\ROG\Documents\GitHub\Tepes.AI\components\crawler\declarationscrawler\data\declarations" \
+           r"\8582607_339012_009.pdf "
     with open(file, 'rb') as f:
         pdf_normalizer = PDFNormalizer(f)
         pdf_normalizer.normalize_data()
         pdf_normalizer.extract_name()
         pdf_normalizer.extract_position()
+        pdf_normalizer.extract_type_of_declaration()
+        pdf_normalizer.extract_salary()
+        pdf_normalizer.extract_vehicles()
+        pdf_normalizer.extract_assets()
+        pdf_normalizer.extract_debts()
