@@ -38,18 +38,19 @@
 #         # download_button = row.find_element_by_class_name(r"null ui-col-7 ui-datatable-first")
 #         # download_button.click()
 import os.path
-import sys
+import time
+from _csv import reader
+from argparse import Namespace
+from pathlib import Path
 
 from selenium import webdriver
 from selenium.common import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-from constants import *
-from declaration_parser import get_parser
 from CallDecorator import call_decorator, time_checker, exception_checker
-from declaration_parser import get_parser, parse_args
+from constants import *
 
 
 @call_decorator
@@ -160,7 +161,22 @@ def crawl(args):
     input('Type something if you want to close the browser\n')
 
 
+def alternate_crawl():
+    files = Path("components/crawler/publicfiguresscraper/data/declarations").glob('*.csv')
+    for file in files:
+        with open(file, 'r') as f:
+            csv_reader = reader(f)
+            header = next(csv_reader)
+            if header != None:
+                for row in csv_reader:
+                    driver = get_selenium_driver()
+                    driver.get("http://declaratii.integritate.eu/search.html")
+                    crawl_declaratii_integritate(driver, Namespace(nume=row[0], localitate=row[3],
+                                                                   tip_declaratie="Declaratie de avere", data_inceput="01.06.2021", count=3))
+                    time.sleep(6)
+
+
 if __name__ == '__main__':
-    args = parse_args(sys.argv[1:])
-    crawl(args)
-    print(args)
+    # args = parse_args(sys.argv[1:]) - Uncomment for normal run
+    # crawl(args)
+    alternate_crawl()
