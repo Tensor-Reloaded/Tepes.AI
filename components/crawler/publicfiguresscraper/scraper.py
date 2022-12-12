@@ -8,9 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
+from CallDecorator import call_decorator
 from constants import *
 from scraping_parser import get_parser
-from CallDecorator import call_decorator
 
 
 @call_decorator
@@ -60,13 +60,13 @@ def descarca_declaratii_integritate(driver):
 def scrape_declaratii_integritate(driver):
     open_advanced_search_page(driver)
 
-    start_date = datetime.date(year=2020, month=11, day=1)
+    start_date = datetime.date(year=2021, month=11, day=1)
     end_date = datetime.date(year=2022, month=11, day=1)
 
     current_start_date = start_date
     while current_start_date <= end_date:
-        current_end_date = current_start_date + datetime.timedelta(days=73)
-        for localitate_index in range(3, 3167):
+        current_end_date = current_start_date + datetime.timedelta(days=365)
+        for localitate_index in range(3, 53):
             try:
                 element_present = EC.presence_of_element_located(("id", LOCALITATE_INPUT_ID))
                 WebDriverWait(driver, 10).until(element_present)
@@ -92,7 +92,7 @@ def scrape_declaratii_integritate(driver):
             search_declaratii_integritate(driver)
             descarca_declaratii_integritate(driver)
 
-        current_start_date += datetime.timedelta(days=1)
+        current_start_date = current_end_date + datetime.timedelta(days=1)
 
 
 @call_decorator
@@ -120,4 +120,4 @@ def scrape(args):
 if __name__ == '__main__':
     arg_parser = get_parser()
     args = arg_parser.parse_args()
-    scrape(args)
+    # scrape(args) - Uncomment if scraping is needed
