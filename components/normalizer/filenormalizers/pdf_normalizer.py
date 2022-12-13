@@ -1,4 +1,4 @@
-from components.normalizer.normalizer_interface import NormalizerInterface
+from components.Normalizer.normalizer_interface import NormalizerInterface
 from PyPDF2 import PdfFileReader
 import re
 import random
@@ -191,8 +191,7 @@ class PDFNormalizer(NormalizerInterface):
 
 
 if __name__ == "__main__":
-    file = r"C:\Users\ROG\Documents\GitHub\Tepes.AI\components\crawler\declarationscrawler\data\declarations" \
-           r"\8582607_339012_009.pdf "
+    file = r"D:\Facultate\master anul 1\Tepes.AI\components\Crawler\declarationscrawler\data\declarations\demo\declaratie_ocr_converter.pdf"
     with open(file, 'rb') as f:
         pdf_normalizer = PDFNormalizer(f)
         pdf_normalizer.normalize_data()
