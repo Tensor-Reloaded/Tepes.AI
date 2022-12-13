@@ -25,6 +25,4 @@ if __name__ == "__main__":
     print(file_location)
     filenames = glob.glob(file_location)
     print(filenames)
-    for declaration in filenames:
-        with open(declaration, 'r') as d:
-            ocrmypdf.ocr(d, d)
+
