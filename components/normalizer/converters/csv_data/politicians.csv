@@ -1,21 +1,22 @@
-Iulian,Mihalcea,Deputat,MUBA-Koveles maRTd Whar. ,0,No Assets,No Vehicles,[],
-Florin-Mihai,Mihalcea,Deputat, DECLARATIE DE INTERESE ,0,No Assets,No Vehicles,No Debts,No salary found
-Iulian,Ionescu,Deputat,JUDETUL BIHOR - ,0,No Assets,No Vehicles,[],No salary found
-Pavel,Popescu,Deputat,PRIMARIA COMUNE! ABRAMUT JUDETUL BIHOR ,0,No Assets,No Vehicles,No Debts,No salary found
-Pavel,Mihalcea,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
-Andrei,Mihalcea,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
-Andrei,Ionescu,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
-Pavel,Mihalcea,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
-Florin-Mihai,Mihalcea,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
-Pavel,Popescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
-Florin-Mihai,Mihalcea,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
-Pavel,Ionescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
-Andrei,Ionescu,Deputat,; CONSIPIUL LOCAL ,0,No Assets,No Vehicles,[],
-Iulian,Ionescu,Deputat,"| Nr, AU eee ",0,No Assets,No Vehicles,No Debts,No salary found
-Florin-Mihai,Ionescu,Deputat,de INSPECTOR la D.G.AF-D.R.A.F 6 ORADEA ’ ,0,No Assets,No Vehicles,[],
-Andrei,Asandoaie,Deputat,de INSPECTOR la D.R.A.F 6 ORADEA ’ ,0,No Assets,No Vehicles,No Debts,No salary found
-Andrei,Ionescu,Deputat," Subsemnatul/, Subsemnata............. CUgcds seseeeseeeees vg @ (OR ae ~LUUKA) sndtadeRaniaane ; ",0,No Assets,No Vehicles,[],No salary found
-Iulian,Mihalcea,Deputat,Subsemnatul / Subsemnata soll GOR ees RMR > 4220 AL eceeees a ee ; ,0,No Assets,No Vehicles,No Debts,No salary found
-Andrei,Asandoaie,Deputat,de INSPECTOR ANTIFRAUDA la D.G.AF-D.R.A.F 6 ORADEA 7 ,0,No Assets,No Vehicles,[],
-Andrei,Popescu,Deputat,de INSPECTOR ANTIFRAUDA la D.R.A.F 6 ORADEA 5 ,0,No Assets,No Vehicles,No Debts,No salary found
+first_name,last_name,functions,declaration_type,investments,assets,vehicles,debts,salary
+Pavel,Ionescu,Deputat,MUBA-Koveles maRTd Whar. ,0,No Assets,No Vehicles,[],
+Florin-Mihai,Asandoaie,Deputat, DECLARATIE DE INTERESE ,0,No Assets,No Vehicles,No Debts,No salary found
+Iulian,Popescu,Deputat,JUDETUL BIHOR - ,0,No Assets,No Vehicles,[],No salary found
+Iulian,Asandoaie,Deputat,PRIMARIA COMUNE! ABRAMUT JUDETUL BIHOR ,0,No Assets,No Vehicles,No Debts,No salary found
+Iulian,Asandoaie,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
+Andrei,Popescu,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
+Pavel,Ionescu,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
+Florin-Mihai,Asandoaie,Deputat,"Subsemnatul/Subsemnata, GALE E&., Ntega dae? BOEBA AN , avand funcfia de POLITEST 2pehe se la PA etd ce Mért MALE et FUP ",0,No Assets,No Vehicles,[],
+Andrei,Ionescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
+Andrei,Popescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
+Florin-Mihai,Ionescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
+Florin-Mihai,Popescu,Deputat, CNP DECLARATIE DE I ‘ ,0,No Assets,No Vehicles,No Debts,No salary found
+Andrei,Mihalcea,Deputat,; CONSIPIUL LOCAL ,0,No Assets,No Vehicles,[],
+Andrei,Popescu,Deputat,"| Nr, AU eee ",0,No Assets,No Vehicles,No Debts,No salary found
+Andrei,Asandoaie,Deputat,de INSPECTOR la D.G.AF-D.R.A.F 6 ORADEA ’ ,0,No Assets,No Vehicles,[],
+Pavel,Ionescu,Deputat,de INSPECTOR la D.R.A.F 6 ORADEA ’ ,0,No Assets,No Vehicles,No Debts,No salary found
+Iulian,Ionescu,Deputat," Subsemnatul/, Subsemnata............. CUgcds seseeeseeeees vg @ (OR ae ~LUUKA) sndtadeRaniaane ; ",0,No Assets,No Vehicles,[],No salary found
+Florin-Mihai,Ionescu,Deputat,Subsemnatul / Subsemnata soll GOR ees RMR > 4220 AL eceeees a ee ; ,0,No Assets,No Vehicles,No Debts,No salary found
+Iulian,Popescu,Deputat,de INSPECTOR ANTIFRAUDA la D.G.AF-D.R.A.F 6 ORADEA 7 ,0,No Assets,No Vehicles,[],
+Pavel,Mihalcea,Deputat,de INSPECTOR ANTIFRAUDA la D.R.A.F 6 ORADEA 5 ,0,No Assets,No Vehicles,No Debts,No salary found
 de,agent,Deputat,a* odseatte la Serviced i MR U ry ny OVALE | 06.08 2824 ,0,No Assets,No Vehicles,No Debts,No salary found
