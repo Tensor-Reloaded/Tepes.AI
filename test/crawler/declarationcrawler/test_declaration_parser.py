@@ -1,8 +1,9 @@
 import unittest
 from argparse import ArgumentParser
 
-from custom_crawler.declarationcrawlers.constants import DECLARATII_INTEGRITATE_WEBSITE
-from custom_crawler.declarationcrawlers import get_parser, ARGUMENTS
+
+from components.crawler.declarationscrawler.constants import DECLARATII_INTEGRITATE_WEBSITE
+from components.crawler.declarationscrawler.declaration_parser import ARGUMENTS, get_parser
 
 
 class DeclarationParserTest(unittest.TestCase):

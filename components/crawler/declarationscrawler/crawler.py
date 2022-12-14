@@ -49,14 +49,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
-from CallDecorator import call_decorator, time_checker, exception_checker
-from constants import *
+from components.crawler.declarationscrawler.CallDecorator import call_decorator, exception_checker, time_checker
+from components.crawler.declarationscrawler.constants import *
+from components.crawler.declarationscrawler.declaration_parser import parse_args
+
+DECLARATIONS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "declarations")
 
 
 @call_decorator
-def get_selenium_driver():
-    DECLARATIONS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "declarations")
-    prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': DECLARATIONS_PATH}
+def get_selenium_driver(download_path=DECLARATIONS_PATH):
+    prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': download_path}
     options = webdriver.ChromeOptions()
     options.add_experimental_option('prefs', prefs)
     return webdriver.Chrome(executable_path=LOCATIE_DRIVER, options=options)
@@ -172,7 +174,8 @@ def alternate_crawl():
                     driver = get_selenium_driver()
                     driver.get("http://declaratii.integritate.eu/search.html")
                     crawl_declaratii_integritate(driver, Namespace(nume=row[0], localitate=row[3],
-                                                                   tip_declaratie="Declaratie de avere", data_inceput="01.06.2021", count=3))
+                                                                   tip_declaratie="Declaratie de avere",
+                                                                   data_inceput="01.06.2021", count=3))
                     time.sleep(6)
 
 
