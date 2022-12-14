@@ -1,7 +1,9 @@
-from components.Normalizer.normalizer_interface import NormalizerInterface
-from PyPDF2 import PdfFileReader
-import re
 import random
+import re
+
+from PyPDF2 import PdfFileReader
+
+from components.normalizer.normalizer_interface import NormalizerInterface
 
 
 class PDFNormalizer(NormalizerInterface):
@@ -12,7 +14,7 @@ class PDFNormalizer(NormalizerInterface):
     def normalize_data(self):
         pages_number = self.reader.getNumPages()
         for p in range(pages_number):
-        #    print(self.reader.getPage(0).extractText())
+            #    print(self.reader.getPage(0).extractText())
             self.content += self.reader.getPage(p).extractText()
 
         # print(self.content)
@@ -51,7 +53,7 @@ class PDFNormalizer(NormalizerInterface):
         except:
             position = 'Deputat'
 
-        if position == '' :
+        if position == '':
             position = 'Deputat'
         print("position is: " + position)
         return position

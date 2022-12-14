@@ -1,6 +1,11 @@
-from components.normalizer.normalizer_interface import NormalizerInterface
-from PyPDF2 import PdfFileReader
+import glob
+import os
+
 import ocrmypdf
+from PyPDF2 import PdfFileReader
+
+from components.normalizer.normalizer_interface import NormalizerInterface
+from normalizer.converters.politician_converter import PoliticianConvertor
 
 
 class OCRNormalizer(NormalizerInterface):
@@ -19,10 +24,9 @@ class OCRNormalizer(NormalizerInterface):
 
 
 if __name__ == "__main__":
-    file = r"/Users/razcro/PycharmProjects/TAIP-Facultate/components/crawler/declarationscrawler/data/declarations/declaratie_extract_ocr.pdf"
-    new_file = r"/Users/razcro/PycharmProjects/TAIP-Facultate/components/crawler/declarationscrawler/data/declarations/declaratie_ocr_converter.pdf"
-
-    ocrmypdf.ocr(file, new_file)
-    with open (new_file, "rb") as f:
-        pdf_normalizer = OCRNormalizer(f)
-        pdf_normalizer.normalize_data()
+    politician_converter = PoliticianConvertor()
+    file_location = os.path.join(politician_converter.path, '*.pdf')
+    filenames = glob.glob(file_location)
+    for file in filenames:
+        ocrmypdf.ocr(file, file.replace(".pdf", "_ocr.pdf").replace(politician_converter.path,
+                                                                    politician_converter.redirect_path))
