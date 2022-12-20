@@ -6,8 +6,8 @@ import pandas as pd
 from pythonrv import rv
 
 from components.normalizer.converter import Convertor
-from normalizer.filenormalizers.pdf_normalizer import PDFNormalizer
-from normalizer.models.politician_model import PoliticianModel
+from components.normalizer.filenormalizers.pdf_normalizer import PDFNormalizer
+from components.normalizer.models.politician_model import PoliticianModel
 
 
 class PoliticianConvertor(Convertor):
@@ -67,8 +67,8 @@ def validate(csv_path):
     # TODO: ADD MORE VALIDATION ONCE THE APPLICATION SCALES
 
 
-@rv.monitor(validate=validate, clean=clean_csv_rows)
-@rv.spec(when=rv.PRE, history_size=3)
+# @rv.monitor(validate=validate, clean=clean_csv_rows)
+# @rv.spec(when=rv.PRE, history_size=3)
 def validate_then_send(event):
     if event.fn.validate.called:
         print("Validation was conducted!")
@@ -86,6 +86,6 @@ def print_dataframe(csv_path):
 
 
 if __name__ == "__main__":
-    # politician_converter = PoliticianConvertor()
-    # politician_converter.cast_to_politician_and_save_csv()
+    politician_converter = PoliticianConvertor()
+    politician_converter.cast_to_politician_and_save_csv()
     print_dataframe("csv_data\\politicians.csv")

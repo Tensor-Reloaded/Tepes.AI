@@ -2,6 +2,7 @@ import random
 import re
 
 from PyPDF2 import PdfFileReader
+from autocorrect import Speller
 
 from components.normalizer.normalizer_interface import NormalizerInterface
 
@@ -10,22 +11,22 @@ class PDFNormalizer(NormalizerInterface):
     def __init__(self, pdf_file):
         self.reader = PdfFileReader(pdf_file)
         self.content = ''
+        self.speller = Speller()
 
     def normalize_data(self):
         pages_number = self.reader.getNumPages()
         for p in range(pages_number):
             #    print(self.reader.getPage(0).extractText())
             self.content += self.reader.getPage(p).extractText()
-
-        # print(self.content)
+        print("Content \n" + self.content)
 
     def extract_name(self):
         try:
-            first_page = self.reader.getPage(0).extractText()
-            split_page = first_page.partition("Subsemnatul,")[2]
-            name = split_page.partition(', ')[0]
-            last_name = name.split(' ')[1]
-            first_name = name.split(' ')[3]
+            split_page = self.content.partition("Subsemnatul/Subsemnata, ")[2]
+            name = split_page.partition(',')[0]
+            print("name:" + name)
+            last_name = name.split(' ')[0]
+            first_name = name.split(' ')[2]
         except:
             last_names = ['Popescu', 'Ionescu', 'Mihalcea', 'Asandoaie']
             first_names = ['Florin-Mihai', 'Andrei', 'Pavel', 'Iulian']
@@ -37,9 +38,8 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_position(self):
         try:
-            first_page = self.reader.getPage(0).extractText();
-            split_page = first_page.partition("av4nd functia de ")[2]
-            position = split_page.split(', CNP')[0]
+            split_page = self.content.partition("avand functia de")[2]
+            position = split_page.split(',')[0]
             position.replace(',', ' ')
             position = list(position)
             for i in range(len(position)):
@@ -60,11 +60,13 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_type_of_declaration(self):
         try:
-            first_page = self.reader.getPage(0).extractText()
-            split_page = first_page.partition("Subsemnatul,")[0]
-            type_of_declaration = re.sub(' +', ' ', split_page.split('\n')[2])
+            split_page = self.content.partition("Subsemnatul/Subsemnata,")[0]
+            type_of_declaration = re.sub(' +', ' ', split_page.split('\n')[0])
 
         except:
+            type_of_declaration = 'DECLARATIE DE AVERE'
+
+        if type_of_declaration == '':
             type_of_declaration = 'DECLARATIE DE AVERE'
 
         print("type of declaration is: " + type_of_declaration)
@@ -72,8 +74,7 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_salary(self):
         try:
-            fourth_page = self.reader.getPage(4).extractText()
-            split_page = fourth_page.partition("Salari")[2].partition("\n")[0]
+            split_page = self.content.partition("Salar")[2].partition("\n")[0]
             salary = re.sub(' ', '', split_page)
         except:
             salary = 'No salary found'
@@ -82,8 +83,7 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_vehicles(self):
         try:
-            second_page = self.reader.getPage(1).extractText()
-            split_page = second_page.partition("Autoturism")
+            split_page = self.content.partition("Autoturism")
             vehicles = list()
             while split_page[2] != '':
                 vehicles.append(split_page[2])
@@ -124,8 +124,7 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_assets(self):
         try:
-            first_page = self.reader.getPage(0).extractText()
-            split_page = first_page.partition('Se vor declara inclusiv cele aflate in alte {ari.')
+            split_page = self.content.partition('Se vor declara inclusiv cele aflate in alte {ari.')
             assets = split_page[2].split('|')
             for asset in assets:
                 asset = re.sub('\n +', ' ', asset)
@@ -168,8 +167,7 @@ class PDFNormalizer(NormalizerInterface):
 
     def extract_debts(self):
         try:
-            fourth_page = self.reader.getPage(3).extractText()
-            split_page = fourth_page.partition('Se vor declara inclusiv pasivele financiare acumulate')
+            split_page = self.content.partition('Se vor declara inclusiv pasivele financiare acumulate')
             debts = split_page[2].partition('.')[2]
             debts = re.sub('\n +', ' ', debts)
             debts = debts.lstrip()
@@ -193,7 +191,7 @@ class PDFNormalizer(NormalizerInterface):
 
 
 if __name__ == "__main__":
-    file = r"D:\Facultate\master anul 1\Tepes.AI\components\Crawler\declarationscrawler\data\declarations\demo\declaratie_ocr_converter.pdf"
+    file = r"C:\Users\codrin.horceag\PycharmProjects\Tepes.AI\components\normalizer\filenormalizers\ocr_data\10222326_313957_012_ocr.pdf"
     with open(file, 'rb') as f:
         pdf_normalizer = PDFNormalizer(f)
         pdf_normalizer.normalize_data()
