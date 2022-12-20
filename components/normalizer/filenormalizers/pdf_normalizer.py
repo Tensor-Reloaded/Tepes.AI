@@ -188,17 +188,3 @@ class PDFNormalizer(NormalizerInterface):
 
         print(returned_debts)
         return returned_debts
-
-
-if __name__ == "__main__":
-    file = r"C:\Users\codrin.horceag\PycharmProjects\Tepes.AI\components\normalizer\filenormalizers\ocr_data\10222326_313957_012_ocr.pdf"
-    with open(file, 'rb') as f:
-        pdf_normalizer = PDFNormalizer(f)
-        pdf_normalizer.normalize_data()
-        pdf_normalizer.extract_name()
-        pdf_normalizer.extract_position()
-        pdf_normalizer.extract_type_of_declaration()
-        pdf_normalizer.extract_salary()
-        pdf_normalizer.extract_vehicles()
-        pdf_normalizer.extract_assets()
-        pdf_normalizer.extract_debts()

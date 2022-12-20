@@ -1,8 +1,10 @@
 import glob
 import os
+import shutil
 
 import ocrmypdf
 from PyPDF2 import PdfFileReader
+from ocrmypdf import PriorOcrFoundError
 
 from components.normalizer.normalizer_interface import NormalizerInterface
 from normalizer.converters.politician_converter import PoliticianConvertor
@@ -28,5 +30,8 @@ if __name__ == "__main__":
     file_location = os.path.join(politician_converter.path, '*.pdf')
     filenames = glob.glob(file_location)
     for file in filenames:
-        ocrmypdf.ocr(file, file.replace(".pdf", "_ocr.pdf").replace(politician_converter.path,
-                                                                    politician_converter.redirect_path))
+        try:
+            ocrmypdf.ocr(file, file.replace(".pdf", "_ocr.pdf").replace(politician_converter.path,
+                                                                        politician_converter.redirect_path))
+        except PriorOcrFoundError:
+            shutil.copy(file, politician_converter.redirect_path)
