@@ -2,7 +2,7 @@
 
 Info [here](https://docs.google.com/document/d/1a78ke_HjEj2-6NNwZzhNRbeXTywlwA5PBHYc5BC-IG0/edit#bookmark=id.wnzhxihiz3qv).
 Trello [here](https://trello.com/b/BSQbCsMh/tepes-ai-agile-environment)
-Documentation [here](https://docs.google.com/document/d/11HAprWOMdu8luBHuN1rZ-p7hCfK98ad8Ibay7AzCCvM/edit)
+Technical Report [here](https://docs.google.com/document/d/11HAprWOMdu8luBHuN1rZ-p7hCfK98ad8Ibay7AzCCvM/edit)
 
 ## 1.Team
 - Croitoru Razvan - **Member** - _croitorurazvan1@gmail.com_
